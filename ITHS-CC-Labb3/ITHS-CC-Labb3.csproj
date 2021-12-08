@@ -8,4 +8,10 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HouseF.Tests\HouseF.Tests.csproj" />
+    <ProjectReference Include="..\HouseFB\HouseFB.csproj" />
+    <ProjectReference Include="..\HouseF\HouseF.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -14,4 +14,11 @@
     <PackageReference Include="coverlet.collector" Version="3.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HouseF.Tests\HouseF.Tests.csproj" />
+    <ProjectReference Include="..\HouseFB\HouseFB.csproj" />
+    <ProjectReference Include="..\HouseF\HouseF.csproj" />
+    <ProjectReference Include="..\ITHS-CC-Labb3\ITHS-CC-Labb3.csproj" />
+  </ItemGroup>
+
 </Project>
