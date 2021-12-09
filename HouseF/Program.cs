@@ -1,6 +1,6 @@
 ﻿global using HouseF;
 
-HouseFactory factory = new HouseFactory();
+HouseFactory factory = new();
 
 House smallHouse = factory.CreateHouse("smallhouse");
 Console.WriteLine(smallHouse);
@@ -13,3 +13,4 @@ Console.WriteLine("===========================");
 House largeHouse = factory.CreateHouse("largehouse");
 Console.WriteLine(largeHouse);
 Console.WriteLine("===========================");
+

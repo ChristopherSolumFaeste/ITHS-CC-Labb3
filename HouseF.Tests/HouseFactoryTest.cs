@@ -9,18 +9,25 @@ namespace HouseF.Tests
     public class HouseFactoryTest
     {
         HouseFactory houseFactory;
-        [SetUp]
-        public void Setup()
+        House smallHouse;
+        House mediumHouse;
+        House largeHouse;
+
+        [OneTimeSetUp]
+        public void OneTimeSetup()
         {
             houseFactory = new HouseFactory();
+            smallHouse = houseFactory.CreateHouse("smallhouse");
+            mediumHouse = houseFactory.CreateHouse("mediumhouse");
+            largeHouse = houseFactory.CreateHouse("largehouse");
         }
 
         [TestCase("smallhouse")]
         public void CreateHouse_GivenString_smallhouse_ReturnTypeSmallHouse(string houseName)
         {
             Assert.That(houseFactory.CreateHouse(houseName), Is.TypeOf<SmallHouse>());
-        }  
-        
+        }
+
         [TestCase("mediumhouse")]
         public void CreateHouse_GivenString_mediumhouse_ReturnTypeMediumHouse(string houseName)
         {
@@ -39,25 +46,76 @@ namespace HouseF.Tests
             Assert.Throws<KeyNotFoundException>(() => houseFactory.CreateHouse(houseName));
         }
 
-        [TestCase("smallhouse")]
-        public void CreateHouse_SmallHouseHasGarageAndSwimmingPool_IsFalse(string houseName)
+        [Test]
+        public void CreateHouse_SmallHouseHasGarageAndSwimmingPool_IsFalse()
         {
-            House smallHouse = houseFactory.CreateHouse(houseName);
             Assert.That(smallHouse.HasGarage && smallHouse.HasSwimmingPool, Is.False);
         }
 
-        [TestCase("mediumhouse")]
-        public void CreateHouse_MediumHouseHasGarageAndNoSwimmingpool_IsTrue(string houseName)
+        [Test]
+        public void CreateHouse_MediumHouseHasGarageAndNoSwimmingpool_IsTrue()
         {
-            House mediumHouse = houseFactory.CreateHouse(houseName);
             Assert.That(mediumHouse.HasGarage && !mediumHouse.HasSwimmingPool, Is.True);
         }
 
-        [TestCase("largehouse")]
-        public void CreateHouse_LargeHouseHasGarageAndSwimmingPool_IsTrue(string houseName)
+        [Test]
+        public void CreateHouse_LargeHouseHasGarageAndSwimmingPool_IsTrue()
         {
-            House largeHouse = houseFactory.CreateHouse(houseName);
             Assert.That(largeHouse.HasGarage && largeHouse.HasSwimmingPool, Is.True);
+        }
+
+        [Test]
+        public void CreateHouse_GivenSmallHouse_NoOfRoomsIsEqualToOne()
+        {
+            Assert.That(smallHouse.NoOfRooms, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void CreateHouse_GivenMediumHouse_NoOfRoomsIsEqualToFour()
+        {
+            Assert.That(mediumHouse.NoOfRooms, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void CreateHouse_GivenLargeHouse_NoOfRoomsIsEqualToFifteen()
+        {
+            Assert.That(largeHouse.NoOfRooms, Is.EqualTo(15));
+        }
+
+        [Test]
+        public void CreateHouse_GivenSmallHouse_NoOfWindowsIsEqualToThree()
+        {
+            Assert.That(smallHouse.NoOfWindows, Is.EqualTo(3));
+        }
+
+        [Test]
+        public void CreateHouse_GivenMediumHouse_NoOfWindowsIsEqualToEight()
+        {
+            Assert.That(mediumHouse.NoOfWindows, Is.EqualTo(8));
+        }
+
+        [Test]
+        public void CreateHouse_GivenLargeHouse_NoOfWindowsIsEqualToThirty()
+        {
+            Assert.That(largeHouse.NoOfWindows, Is.EqualTo(30));
+        }
+
+        [Test]
+        public void CreateHouse_GivenSmallHouse_ParkingSpotsInGarageIsEqualToZero()
+        {
+            Assert.That(smallHouse.ParkingSpotsInGarage, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void CreateHouse_GivenMediumHouse_ParkingSpotsInGarageIsEqualToOne()
+        {
+            Assert.That(mediumHouse.ParkingSpotsInGarage, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void CreateHouse_GivenLargeHouse_ParkingSpotsInGarageIsEqualToFive()
+        {
+            Assert.That(largeHouse.ParkingSpotsInGarage, Is.EqualTo(5));
         }
     }
 }

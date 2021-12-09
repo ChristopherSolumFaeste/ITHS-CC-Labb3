@@ -13,7 +13,6 @@ namespace HouseFB.Tests
             houseBuilder = new HouseBuilder();
         }
 
-
         [TestCase(1)]
         [TestCase(10)]
         public void SetNumberOfRooms_GivenPositiveNo_IsEqualToGivenNo(int rooms)

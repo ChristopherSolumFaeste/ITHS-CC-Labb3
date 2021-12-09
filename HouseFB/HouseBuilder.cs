@@ -8,7 +8,7 @@ namespace HouseFB
 {
     public class HouseBuilder
     {
-        private House _house;
+        private readonly House _house;
         public HouseBuilder()
         {
             _house = new House();

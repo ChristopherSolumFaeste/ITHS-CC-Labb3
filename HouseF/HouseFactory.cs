@@ -8,7 +8,7 @@ namespace HouseF
 {
     public class HouseFactory
     {
-        private Dictionary<string, Type> _houses;
+        private readonly Dictionary<string, Type> _houses;
         public HouseFactory()
         {
             _houses = LoadHouses();
@@ -16,12 +16,13 @@ namespace HouseF
 
         public House CreateHouse(string houseName)
         {
+            ArgumentNullException.ThrowIfNull(houseName);
             return GetHouseFromDictionary(houseName);
         }
 
         private Dictionary<string, Type> LoadHouses()
         {
-            Dictionary<string, Type> availableHouses = new Dictionary<string, Type>();
+            Dictionary<string, Type> availableHouses = new();
 
             availableHouses.Add("smallhouse", typeof(SmallHouse));
             availableHouses.Add("mediumhouse", typeof(MediumHouse));
