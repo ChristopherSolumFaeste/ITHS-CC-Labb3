@@ -5,7 +5,7 @@ HouseBuilder houseBuilder = new();
 
 House house = houseBuilder
     .SetNoOfRooms(1)
-    .SetNoOfWindows(-1)
+    .SetNoOfWindows(2)
     .SetAdress("LalatoftsVägen 3")
     .HasSwimmingPool()
     .SetParkingSpotsInGarage(5)
